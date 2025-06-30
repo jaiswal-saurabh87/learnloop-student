@@ -1,14 +1,25 @@
-require('dotenv').config(); // Make sure this is at the top
+// server.js
 
+// STEP 1: ADD THIS LINE AT THE TOP
+const mysql = require('mysql'); 
+
+// --- The rest of your imports ---
+require('dotenv').config();
 const express = require('express');
 const http = require('http');
-// ... other imports
+const socketIo = require('socket.io');
+const cors = require('cors');
 
 const app = express();
-// ...
+const server = http.createServer(app);
+const io = socketIo(server, { /* ... */ });
 
+app.use(cors());
+app.use(express.json());
+
+// STEP 2: NOW THIS LINE WILL WORK PERFECTLY
 // Database Connection
-const db = mysql.createConnection(process.env.DATABASE_URL); // Use the DATABASE_URL from Render
+const db = mysql.createConnection(process.env.DATABASE_URL); 
 
 db.connect(err => {
     if (err) {
@@ -18,7 +29,4 @@ db.connect(err => {
     console.log('Successfully connected to the database.');
 });
 
-// ... your routes and middleware
-
-const PORT = process.env.PORT || 5000; // Render provides the PORT variable
-server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// ... rest of your server code
