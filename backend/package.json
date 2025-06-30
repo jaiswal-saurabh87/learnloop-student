@@ -1,4 +1,7 @@
 {
+  "scripts": {
+  "start": "node server.js"
+},
   "name": "learnloop-backend",
   "version": "1.0.0",
   "description": "Backend for LearnLoop",
