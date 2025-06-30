@@ -8,7 +8,7 @@ const app = express();
 // ...
 
 // Database Connection
-const db = mysql.createConnection(process.env.postgresql://learnloop_db_p9nr_user:CPK6BoVZJpN8nAYoGR6AsUkdaVAwnhZ1@dpg-d1h73jngi27c73ccc1ig-a/learnloop_db_p9nr); // Use the DATABASE_URL from Render
+const db = mysql.createConnection(process.env.DATABASE_URL); // Use the DATABASE_URL from Render
 
 db.connect(err => {
     if (err) {
