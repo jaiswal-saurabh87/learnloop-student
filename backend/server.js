@@ -31,14 +31,6 @@ const io = socketIo(server, {
 app.use(cors());
 app.use(express.json());
 
-// Database Connection
-const db = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'password', // IMPORTANT: Replace with your MySQL root password
-    database: 'learnloop'
-});
-
 db.connect(err => {
     if (err) {
         console.error('Database connection failed:', err.stack);
