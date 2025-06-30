@@ -1,16 +1,7 @@
 // At the very top of server.js
 require('dotenv').config();
 
-// ... other imports
-
-// Update the database connection object
-const db = mysql.createConnection({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_DATABASE
-});
-
+// ... other import
 const express = require('express');
 const http = require('http');
 const socketIo = require('socket.io');
@@ -46,6 +37,12 @@ app.set('db', db);
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api', require('./routes/api'));
 
+const db = mysql.createConnection({
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_DATABASE
+});
 
 // Real-time Socket.io connections
 io.on('connection', (socket) => {
